@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/helpers/colors.dart';
-import 'package:learning_flutter/views/home.dart';
+import 'package:learning_flutter/constants/styles.dart';
+import 'package:learning_flutter/views/TabBar.dart';
+import 'constants/constants.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(CupertinoApp(
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,8 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(colorSchemeSeed: AppColor.primary),
-        home: HomeView());
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+          primarySwatch: Colors.grey,
+          //inputDecorationTheme: textFieldTheme,
+          buttonTheme: buttonStyle,
+          textButtonTheme: buttonTheme),
+      home: MainTabBar(),
+      routes: {
+        mainTabRoute: (context) => const MainTabBar(),
+      },
+    );
   }
 }

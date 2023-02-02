@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/constants/constants.dart';
+import 'package:learning_flutter/constants/images.dart';
 import 'package:learning_flutter/helpers/colors.dart';
 import 'package:learning_flutter/helpers/user_preferences.dart';
 
-import 'login_view.dart';
+import 'Login.dart';
 
 enum button { arabic, english }
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class _LanguageSelecState extends StatefulWidget {
+  const _LanguageSelecState({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<_LanguageSelecState> createState() => __LanguageSelecStateState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class __LanguageSelecStateState extends State<_LanguageSelecState> {
   button selectedButton = button.arabic;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        minimum: EdgeInsets.only(bottom: 20),
         child: Container(
           child: Center(
             child: Column(
               children: [
-                Container(
-                  child: Image.asset('assets/DH-Logo-3x.png'),
+                SizedBox(
                   width: logicalWidth / 1.2,
                   height: logicalHeight / 3,
+                  child: Picture.diamondHouseLogo,
                 ),
                 SizedBox(height: logicalHeight / 30),
                 Text(
@@ -105,8 +107,11 @@ class _HomeViewState extends State<HomeView> {
                 Spacer(),
                 TextButton(
                   onPressed: () async {
-                    //await UserDefaults.isArabic(
-                    //selectedButton == button.arabic ? true : false);
+                    await UserDefaults.load();
+                    await UserDefaults.isArabic(
+                        selectedButton == button.arabic ? true : false);
+
+                    if (!mounted) return;
 
                     Navigator.push(
                         context,

@@ -28,7 +28,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  late Category categoryData;
+  Category? categoryData;
   final List<Service> serviceData = <Service>[];
   var isLoading = true;
 
@@ -47,52 +47,59 @@ class _HomepageState extends State<Homepage> {
           backgroundColor: Colors.white,
           child: Material(
             color: Colors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IntrinsicHeight(
-                  child: HomepageHeaderView(),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                FutureBuilder(
-                  builder: ((context, snapshot) {
-                    if (isLoading) {
-                      return Expanded(
-                          flex: 1,
+            child: Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IntrinsicHeight(
+                    child: HomepageHeaderView(),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  FutureBuilder(
+                    builder: ((context, snapshot) {
+                      if (isLoading) {
+                        return Center(
+                            child: CupertinoActivityIndicator(
+                          radius: 20,
+                        ));
+                      } else {
+                        return Expanded(
                           child: Center(
-                              child: CupertinoActivityIndicator(
-                            radius: 20,
-                          )));
-                    } else {
-                      return Center(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 2,
-                          itemBuilder: ((context, index) {
-                            return InkWell(
-                              onTap: () {
-                                if (serviceData.isNotEmpty) {
-                                  Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) => ServicesView(
-                                              data: serviceData[index].data!)));
-                                }
-                              },
-                              child: ServiceCard(
-                                image: categoryData.data[index].image,
-                                title: categoryData.data[index].name,
+                            child: SingleChildScrollView(
+                              child: ListView.builder(
+                                // shrinkWrap: true,
+                                // physics: NeverScrollableScrollPhysics(),
+                                itemCount: serviceData.length,
+                                itemBuilder: ((context, index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      if (serviceData.isNotEmpty) {
+                                        Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    ServicesView(
+                                                        data: serviceData[index]
+                                                            .data!)));
+                                      }
+                                    },
+                                    child: ServiceCard(
+                                      image: categoryData!.data[index].image,
+                                      title: categoryData!.data[index].name,
+                                    ),
+                                  );
+                                }),
                               ),
-                            );
-                          }),
-                        ),
-                      );
-                    }
-                  }),
-                )
-              ],
+                            ),
+                          ),
+                        );
+                      }
+                    }),
+                  )
+                ],
+              ),
             ),
           ),
         );
@@ -109,7 +116,7 @@ class _HomepageState extends State<Homepage> {
         categoryData = categories;
       });
 
-      for (var data in categoryData.data) {
+      for (var data in categoryData!.data) {
         await getServices(data.categoryId);
       }
 

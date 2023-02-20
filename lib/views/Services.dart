@@ -20,31 +20,34 @@ class ServicesView extends StatelessWidget {
           backgroundColor: Colors.white,
           child: Material(
             color: Colors.white,
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Center(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  itemBuilder: ((context, index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => ServicesView(
-                                      data: data,
-                                    )));
-                      },
-                      child: ServiceCard(
-                        image: data[index].image!,
-                        title: data[index].heading!,
+            child: SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 2,
+                        itemBuilder: ((context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) => ServicesView(
+                                            data: data,
+                                          )));
+                            },
+                            child: ServiceCard(
+                              image: data[index].image ?? "",
+                              title: data[index].heading ?? "",
+                            ),
+                          );
+                        }),
                       ),
-                    );
-                  }),
-                ),
-              )
-            ]),
+                    )
+                  ]),
+            ),
           ),
         );
       },

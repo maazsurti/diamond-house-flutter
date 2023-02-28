@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/constants/styles.dart';
-import 'package:learning_flutter/views/TabBar.dart';
+import 'package:learning_flutter/views/MainTabBar.dart';
 import 'constants/constants.dart';
 
 void main() {
-  runApp(CupertinoApp(
+  runApp(MaterialApp(
     home: MyApp(),
   ));
 }
@@ -19,14 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-          primarySwatch: Colors.grey,
-          //inputDecorationTheme: textFieldTheme,
-          buttonTheme: buttonStyle,
-          textButtonTheme: buttonTheme),
       home: MainTabBar(),
       routes: {
-        mainTabRoute: (context) => const MainTabBar(),
+        mainTabRoute: (context) => MainTabBar(),
       },
     );
   }

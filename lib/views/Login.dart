@@ -14,6 +14,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   var focusNode = FocusNode();
+  var isSecureTextEntry = false;
   @override
   void initState() {
     super.initState();
@@ -90,13 +91,20 @@ class _LoginViewState extends State<LoginView> {
                 child: TextField(
                   cursorColor: AppColor.primary,
                   style: textFieldTextStyle,
+                  obscureText: isSecureTextEntry,
                   decoration: InputDecoration(
                     suffixIcon: IconButton(
                       icon: Icon(
-                        Icons.remove_red_eye,
+                        isSecureTextEntry
+                            ? Icons.remove_red_eye_outlined
+                            : Icons.remove_red_eye,
                         color: AppColor.primary,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          isSecureTextEntry = !isSecureTextEntry;
+                        });
+                      },
                     ),
                     contentPadding: EdgeInsets.symmetric(
                       horizontal: 12,

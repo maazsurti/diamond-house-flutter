@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/views/MainTabBar.dart';
+import 'package:learning_flutter/views/main_tabbar.dart';
 import 'constants/constants.dart';
 
 void main() {
@@ -17,7 +17,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MainTabBar(),
+      theme: ThemeData(
+          textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(foregroundColor: Colors.black26)),
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: Colors.black45)),
+      home: PersistentTabBar(),
       routes: {
         mainTabRoute: (context) => MainTabBar(),
       },

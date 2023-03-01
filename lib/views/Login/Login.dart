@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_flutter/constants/images.dart';
 import 'package:learning_flutter/constants/styles.dart';
 import 'package:learning_flutter/helpers/colors.dart';
-import '../constants/constants.dart';
+import '../../constants/constants.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

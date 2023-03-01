@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:learning_flutter/constants/URLs.dart';
-import 'package:learning_flutter/helpers/models/categories_model.dart';
-import 'package:learning_flutter/helpers/models/services_model.dart';
-import 'package:learning_flutter/views/Services/Services.dart';
+import 'package:learning_flutter/models/categories_model.dart';
+import 'package:learning_flutter/models/services_model.dart';
+import 'package:learning_flutter/views/Services/services.dart';
 
 import '../../../../constants/constants.dart';
 import '../../../../reusable_views/navbar.dart';
@@ -16,11 +16,8 @@ import 'Components/home_headerview.dart';
 import '../../reusable_views/service_card.dart';
 
 class Homepage extends StatefulWidget {
-  final String title;
-
   const Homepage({
     Key? key,
-    required this.title,
   }) : super(key: key);
 
   @override
@@ -40,75 +37,73 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabView(
-      builder: (context) {
-        return CupertinoPageScaffold(
-          navigationBar: navBar,
-          child: Material(
-            color: Colors.white,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IntrinsicHeight(
-                    child: HomepageHeaderView(),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  FutureBuilder(
-                    builder: ((context, snapshot) {
-                      if (isLoading) {
-                        return Expanded(
-                          flex: 1,
-                          child: Center(
-                              child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                              CupertinoActivityIndicator(
-                                radius: 20,
-                              ),
-                            ],
-                          )),
-                        );
-                      } else {
-                        return Expanded(
-                          child: Center(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: serviceData.length,
-                              itemBuilder: ((context, index) {
-                                return InkWell(
-                                  onTap: () {
-                                    if (serviceData.isNotEmpty) {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                            builder: (context) => ServicesView(
-                                                data: serviceData[index].data!),
-                                          ));
-                                    }
-                                  },
-                                  child: ServiceCard(
-                                    image: categoryData!.data[index].image,
-                                    title: categoryData!.data[index].name,
-                                  ),
-                                );
-                              }),
-                            ),
-                          ),
-                        );
-                      }
-                    }),
-                  )
-                ],
+    return Scaffold(
+      appBar: navBar(context: context, title: "Home Page"),
+      body: Material(
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntrinsicHeight(
+                child: HomepageHeaderView(),
               ),
-            ),
+              SizedBox(
+                height: 20,
+              ),
+              FutureBuilder(
+                builder: ((context, snapshot) {
+                  if (isLoading) {
+                    return Expanded(
+                      flex: 1,
+                      child: Center(
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: const [
+                          CupertinoActivityIndicator(
+                            radius: 20,
+                          ),
+                        ],
+                      )),
+                    );
+                  } else {
+                    return Expanded(
+                      child: Center(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: serviceData.length,
+                          itemBuilder: ((context, index) {
+                            return InkWell(
+                              onTap: () {
+                                if (serviceData.isNotEmpty) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ServicesView(
+                                          data: serviceData[index].data!,
+                                          title: categoryData!.data[index].name,
+                                        ),
+                                      ));
+                                }
+                              },
+                              child: ServiceCard(
+                                image: categoryData!.data[index].image,
+                                title: categoryData!.data[index].name,
+                              ),
+                            );
+                          }),
+                        ),
+                      ),
+                    );
+                  }
+                }),
+              )
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 

@@ -4,7 +4,7 @@ import 'package:learning_flutter/constants/images.dart';
 import 'package:learning_flutter/helpers/colors.dart';
 import 'package:learning_flutter/helpers/user_preferences.dart';
 
-import 'Login.dart';
+import '../Login/Login.dart';
 
 enum button { arabic, english }
 

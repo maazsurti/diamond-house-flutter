@@ -8,3 +8,5 @@ class Picture {
   static Image image3 = Image.asset('assets/images/Image_03_3x.jpg');
   static Image placeholder = Image.asset('assets/images/placeholder.png');
 }
+
+String placeholderImagePath = 'assets/images/placeholder.png';

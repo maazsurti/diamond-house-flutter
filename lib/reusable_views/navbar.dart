@@ -9,16 +9,17 @@ AppBar navBar(
     String title = ""}) {
   return AppBar(
     backgroundColor: AppColor.primary,
+    elevation: 0,
     title: Align(
       alignment: AlignmentDirectional.centerStart,
       child: Text(
         title,
         textAlign: TextAlign.left,
         style: TextStyle(
-          color: AppColor.secondary,
-          letterSpacing: -0.6,
-          fontFamily: fontName,
-        ),
+            color: AppColor.secondary,
+            letterSpacing: -0.6,
+            fontFamily: fontName,
+            fontWeight: FontWeight.normal),
       ),
     ),
     leading: isBackButtonEnabled

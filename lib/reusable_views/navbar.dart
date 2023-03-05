@@ -19,7 +19,7 @@ AppBar navBar(
             color: AppColor.secondary,
             letterSpacing: -0.6,
             fontFamily: fontName,
-            fontWeight: FontWeight.normal),
+            fontWeight: FontWeight.w700),
       ),
     ),
     leading: isBackButtonEnabled

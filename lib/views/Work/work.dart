@@ -21,40 +21,51 @@ class _WorkState extends State<Work> {
         alignment: Alignment.center,
         child: Column(
           children: [
-            SizedBox(
-              width: logicalWidth,
-              height: logicalWidth / 3.5,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            SizedBox(
-              width: logicalWidth / 1.2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  WorkOption(
-                    title: "Request Leave",
-                    icon: Icon(
-                      Icons.calendar_month,
-                      size: 50,
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                SizedBox(
+                  width: logicalWidth,
+                  height: logicalWidth / 3.8,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
                       color: AppColor.primary,
                     ),
                   ),
-                  WorkOption(
-                    title: "Announcement from HR",
-                    icon: Icon(
-                      CupertinoIcons.speaker,
-                      size: 50,
-                      color: AppColor.primary,
+                ),
+                Positioned(
+                  top: logicalWidth / 7,
+                  child: SizedBox(
+                    width: logicalWidth / 1.2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        WorkOption(
+                          title: "Request Leave",
+                          icon: Icon(
+                            Icons.calendar_month,
+                            size: 50,
+                            color: AppColor.primary,
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        WorkOption(
+                          title: "Announcement from HR",
+                          icon: Icon(
+                            CupertinoIcons.speaker,
+                            size: 50,
+                            color: AppColor.primary,
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-            )
+                  ),
+                )
+              ],
+            ),
+            Icon(Icons.abc)
           ],
         ),
       ),

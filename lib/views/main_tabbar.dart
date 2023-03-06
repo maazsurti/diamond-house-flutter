@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/constants/constants.dart';
 import 'package:learning_flutter/helpers/colors.dart';
-import 'package:learning_flutter/views/Home/Home.dart';
+import 'package:learning_flutter/views/Home/home.dart';
 import 'package:learning_flutter/views/Work/work.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 

@@ -17,8 +17,9 @@ AppBar navBar(
         textAlign: TextAlign.left,
         style: TextStyle(
             color: AppColor.secondary,
-            letterSpacing: -0.6,
+            letterSpacing: -0.3,
             fontFamily: fontName,
+            fontSize: 18,
             fontWeight: FontWeight.w700),
       ),
     ),

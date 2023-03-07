@@ -41,6 +41,11 @@ dependencies:
   transparent_image: ^2.0.0
   dio: ^5.0.0
   shimmer: ^2.0.0
+  # modal_bottom_sheet:
+  #   git:
+  #     url: https://github.com/eli1stark/modal_bottom_sheet.git
+  #     ref: 2b3f9f84f46418c1b337968c88883995f65f47e7
+  #     path: modal_bottom_sheet
   persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
@@ -58,6 +63,12 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+modal_bottom_sheet:
+  git:
+    url: https://github.com/eli1stark/modal_bottom_sheet.git
+    ref: main
+    path: modal_bottom_sheet
+
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

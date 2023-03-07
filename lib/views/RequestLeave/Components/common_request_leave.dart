@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:learning_flutter/constants/constants.dart';
 import 'package:learning_flutter/helpers/colors.dart';
 import 'package:learning_flutter/reusable_views/button.dart';
+import 'package:learning_flutter/views/RequestLeave/Components/common_request_leave_details.dart';
 import 'package:learning_flutter/views/RequestLeave/Components/leave_request_card.dart';
 
 class CommonRequestLeave extends StatefulWidget {
@@ -19,7 +20,7 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
       body: Column(
         children: [
           SizedBox(
-            height: 20,
+            height: 36,
           ),
           Center(
             child: Column(
@@ -30,6 +31,7 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
                   style: TextStyle(
                       fontFamily: fontName,
                       fontSize: 32,
+                      height: 1,
                       color: AppColor.primary,
                       fontWeight: FontWeight.bold),
                 ),
@@ -38,7 +40,8 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
                   style: TextStyle(
                       fontFamily: fontName,
                       fontSize: 18,
-                      color: AppColor.primary,
+                      height: 1,
+                      color: Colors.black87,
                       fontWeight: FontWeight.normal),
                 ),
               ],
@@ -82,7 +85,20 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
             ),
           ),
           SizedBox(height: 36),
-          Button(title: "Request Leave", action: () {}),
+          Button(
+              title: "Request Leave",
+              action: () {
+                showModalBottomSheet(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CommonRequestLeaveDetails();
+                    });
+              }),
           SizedBox(height: 16),
         ],
       ),

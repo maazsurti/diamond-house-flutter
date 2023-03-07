@@ -11,7 +11,7 @@ class _LeaveRequestCardState extends State<LeaveRequestCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Card(
         color: Colors.white,
         elevation: 0,

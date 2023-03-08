@@ -90,9 +90,10 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
               action: () {
                 showModalBottomSheet(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20))),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                    ),
                     isScrollControlled: true,
                     context: context,
                     builder: (BuildContext context) {

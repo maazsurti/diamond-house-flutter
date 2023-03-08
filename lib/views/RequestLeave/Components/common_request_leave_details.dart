@@ -16,112 +16,120 @@ class CommonRequestLeaveDetails extends StatefulWidget {
 class _CommonRequestLeaveDetailsState extends State<CommonRequestLeaveDetails> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SizedBox(
-        height: logicalHeight * 0.8,
-        child: Center(
-          child: Column(
-            children: [
-              Handlebar(),
-              SizedBox(
-                height: 24,
-              ),
-              Text(
-                "8",
-                style: TextStyle(
-                    fontFamily: fontName,
-                    fontSize: 32,
-                    height: 1,
-                    color: AppColor.primary,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "days remaining",
-                style: TextStyle(
-                    fontFamily: fontName,
-                    fontSize: 18,
-                    height: 1,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.normal),
-              ),
-              SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 48),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "From:",
-                      style: TextStyle(
-                          fontFamily: fontName,
-                          fontSize: 14,
-                          height: 1,
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 16),
-                    DateField(),
-                    SizedBox(height: 16),
-                    Text(
-                      "To:",
-                      style: TextStyle(
-                          fontFamily: fontName,
-                          fontSize: 14,
-                          height: 1,
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    DateField(),
-                    SizedBox(
-                      height: 56,
-                    ),
-                    Text(
-                      "Want to leave a message?",
-                      style: TextStyle(
-                          fontFamily: fontName,
-                          fontSize: 19,
-                          height: 1,
-                          color: AppColor.primary,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 16),
-                    Container(
-                      height: 140,
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          border: Border.all(
-                            color: AppColor.primary,
-                            width: 0.6,
-                          )),
-                      child: TextField(
-                        cursorColor: Colors.black54,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText:
-                              "Type your reason for requesting leave here...",
-                          hintStyle: TextStyle(
-                              fontFamily: fontName,
-                              fontSize: 11,
-                              color: Colors.black87),
-                        ),
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                      ),
-                    ),
-                    SizedBox(height: 96),
-                    Button(title: "Submit", action: () {}),
-                    SizedBox(height: 36),
-                  ],
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.85,
+      maxChildSize: 0.85,
+      builder: (context, scrollController) {
+        return SingleChildScrollView(
+          controller: scrollController,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Handlebar(),
+                SizedBox(
+                  height: 24,
                 ),
-              )
-            ],
+                Text(
+                  "8",
+                  style: TextStyle(
+                      fontFamily: fontName,
+                      fontSize: 32,
+                      height: 1,
+                      color: AppColor.primary,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "days remaining",
+                  style: TextStyle(
+                      fontFamily: fontName,
+                      fontSize: 18,
+                      height: 1,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.normal),
+                ),
+                SizedBox(height: 24),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 48),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "From:",
+                        style: TextStyle(
+                            fontFamily: fontName,
+                            fontSize: 14,
+                            height: 1,
+                            color: AppColor.primary,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 16),
+                      DateField(),
+                      SizedBox(height: 16),
+                      Text(
+                        "To:",
+                        style: TextStyle(
+                            fontFamily: fontName,
+                            fontSize: 14,
+                            height: 1,
+                            color: AppColor.primary,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      DateField(),
+                      SizedBox(
+                        height: 56,
+                      ),
+                      Text(
+                        "Want to leave a message?",
+                        style: TextStyle(
+                            fontFamily: fontName,
+                            fontSize: 19,
+                            height: 1,
+                            color: AppColor.primary,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 16),
+                      Container(
+                        height: 140,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 0),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            border: Border.all(
+                              color: AppColor.primary,
+                              width: 0.6,
+                            )),
+                        child: TextField(
+                          cursorColor: Colors.black54,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:
+                                "Type your reason for requesting leave here...",
+                            hintStyle: TextStyle(
+                                fontFamily: fontName,
+                                fontSize: 11,
+                                color: Colors.black87),
+                          ),
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                        ),
+                      ),
+                      SizedBox(height: 96),
+                      Button(title: "Submit", action: () {}),
+                      SizedBox(height: 36),
+                      //Spacer()
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

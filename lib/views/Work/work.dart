@@ -5,6 +5,8 @@ import 'package:learning_flutter/constants/constants.dart';
 import 'package:learning_flutter/helpers/colors.dart';
 import 'package:learning_flutter/helpers/global_functions.dart';
 import 'package:learning_flutter/reusable_views/navbar.dart';
+import 'package:learning_flutter/views/Annoucements/announcements.dart';
+import 'package:learning_flutter/views/Attendance/attendance.dart';
 import 'package:learning_flutter/views/RequestLeave/request_leave.dart';
 import 'package:learning_flutter/views/Work/Components/work_option.dart';
 
@@ -65,7 +67,7 @@ class _WorkState extends State<Work> {
                           color: AppColor.primary,
                         ),
                         action: () {
-                          navigateTo(context, RequestLeave());
+                          navigateTo(context, Announcement());
                         },
                       )
                     ],
@@ -78,7 +80,9 @@ class _WorkState extends State<Work> {
           WorkOption2(
             title: "Attendance",
             icon: Icons.apartment_outlined,
-            action: () {},
+            action: () {
+              navigateTo(context, Attendance());
+            },
           ),
           SizedBox(height: 10),
           WorkOption2(

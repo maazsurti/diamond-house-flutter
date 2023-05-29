@@ -85,7 +85,9 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
             ),
           ),
           SizedBox(height: 36),
-          Button(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Button(
               title: "Request Leave",
               action: () {
                 showModalBottomSheet(
@@ -99,7 +101,9 @@ class _CommonRequestLeaveState extends State<CommonRequestLeave> {
                     builder: (BuildContext context) {
                       return CommonRequestLeaveDetails();
                     });
-              }),
+              },
+            ),
+          ),
           SizedBox(height: 16),
         ],
       ),

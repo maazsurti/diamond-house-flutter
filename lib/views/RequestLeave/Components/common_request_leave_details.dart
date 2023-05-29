@@ -20,12 +20,14 @@ class _CommonRequestLeaveDetailsState extends State<CommonRequestLeaveDetails> {
       expand: false,
       initialChildSize: 0.85,
       maxChildSize: 0.85,
+      minChildSize: 0,
       builder: (context, scrollController) {
         return SingleChildScrollView(
           controller: scrollController,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Handlebar(),
                 SizedBox(
@@ -150,7 +152,7 @@ class _DateFieldState extends State<DateField> {
             context: context,
             initialDate: DateTime.now(),
             firstDate: DateTime.now(),
-            lastDate: DateTime(2024, 9, 7, 17, 30));
+            lastDate: DateTime(2024));
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
